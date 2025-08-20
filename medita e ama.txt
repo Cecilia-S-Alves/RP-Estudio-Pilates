@@ -1,0 +1,63 @@
+medita e ama
+
+https://icons.expo.fyi/Index
+
+https://www.canva.com/design/DAGvU3ihJgE/derggUGvODWyhcrqZMlPJQ/edit?utm_content=DAGvU3ihJgE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
+5 telas 
+telas das turmas
+verificar mensalidades (check box)
+telas de dados alunos
+adicionar alunos
+gerenciar turmas
+
+import React from "react";
+import { StyleSheet, View } from 'react-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Painel from './Screens/Painel';
+
+export default function App() {
+  const Drawer = createDrawerNavigator();
+  return (
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="painel" component={Painel}/>
+      </Drawer.Navigator>
+    </NavigationContainer>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#d4a56f',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function Painel() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.Text}>Painel</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: '#d4a56f',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    Text: {
+      fontSize: 80,
+      color:'rgb(78, 90, 94)',
+      fontFamily: "Overlock SC",
+      justifyContent: "space-between",
+    },
+  });
