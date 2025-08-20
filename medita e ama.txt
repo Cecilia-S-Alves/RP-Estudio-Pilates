@@ -11,20 +11,59 @@ telas de dados alunos
 adicionar alunos
 gerenciar turmas
 
-import React from "react";
-import { StyleSheet, View } from 'react-native';
-import { NavigationContainer } from "@react-navigation/native";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import Painel from './Screens/Painel';
+App
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Painel from '../Screens/Painel';
+import Mensalidade from '../Screens/Mensalidade';
 
 export default function App() {
-  const Drawer = createDrawerNavigator();
+  const bottom = createBottomTabNavigator();
   return (
+    
     <NavigationContainer>
-      <Drawer.Navigator>
-        <Drawer.Screen name="painel" component={Painel}/>
-      </Drawer.Navigator>
+      <bottom.Navigator>
+        <bottom.Screen name='Painel' component={Painel} />
+        <bottom.Screen name='Mensalidade' component={Mensalidade}/>
+      </bottom.Navigator>
     </NavigationContainer>
+  )
+}
+
+
+Mensalidade
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function Mensalidade() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.texto}>Painel</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#cde2db',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  texto: {
+    fontFamily:'Overlock SC',
+    color:'#4e5a5e'
+  }
+});
+
+painel
+import { StyleSheet, Text, View } from 'react-native';
+
+export default function Painel() {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.texto}>Painel</Text>
+    </View>
   );
 }
 
@@ -35,29 +74,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  texto: {
+    fontFamily:'Overlock SC',
+    color:'#4e5a5e'
+  }
 });
 
-import { StyleSheet, Text, View } from 'react-native';
-
-export default function Painel() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.Text}>Painel</Text>
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: '#d4a56f',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    Text: {
-      fontSize: 80,
-      color:'rgb(78, 90, 94)',
-      fontFamily: "Overlock SC",
-      justifyContent: "space-between",
-    },
-  });
