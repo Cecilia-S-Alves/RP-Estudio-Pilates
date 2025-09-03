@@ -7,8 +7,8 @@ https://www.canva.com/design/DAGvU3ihJgE/derggUGvODWyhcrqZMlPJQ/edit?utm_content
 5 telas 
 telas das turmas
 verificar mensalidades (check box)
-telas de dados alunos
-adicionar alunos
+telas de dados alunos adicionar alunos
+Painel
 gerenciar turmas
 
 App
@@ -79,4 +79,3 @@ const styles = StyleSheet.create({
     color:'#4e5a5e'
   }
 });
-

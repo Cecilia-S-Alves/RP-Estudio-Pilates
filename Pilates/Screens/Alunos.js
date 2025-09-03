@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Mensalidade() {
+export default function Alunos() {
   return (
     <View style={styles.container}>
-      <Text style={styles.texto}>Mensalidade</Text>
+      <Text style={styles.texto}>Alunos</Text>
     </View>
   );
 }
@@ -11,7 +11,7 @@ export default function Mensalidade() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#cde2db',
+    backgroundColor: '#b86516',
     alignItems: 'center',
     justifyContent: 'center',
   },

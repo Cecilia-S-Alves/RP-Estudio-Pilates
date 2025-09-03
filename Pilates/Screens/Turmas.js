@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function Mensalidade() {
+export default function Turmas() {
   return (
     <View style={styles.container}>
-      <Text style={styles.texto}>Mensalidade</Text>
+      <Text style={styles.texto}>Turmas</Text>
     </View>
   );
 }
@@ -11,7 +11,7 @@ export default function Mensalidade() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#cde2db',
+    backgroundColor: '#939964',
     alignItems: 'center',
     justifyContent: 'center',
   },
