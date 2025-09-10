@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import Painel from './Screens/Painel';
-import Mensalidade from './Screens/Mensalidade';
-import Alunos from './Screens/Alunos';
-import Turmas from './Screens/Turmas';
+import Painel from '../pilatesStudio/screens/Painel';
+import Mensalidade from '../pilatesStudio/screens/Mensalidade';
+import Alunos from '../pilatesStudio/screens/Alunos';
+import Turmas from '../pilatesStudio/screens/Turmas';
 
 export default function App() {
   const bottom = createBottomTabNavigator();
