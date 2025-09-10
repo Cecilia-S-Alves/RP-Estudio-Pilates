@@ -38,3 +38,4 @@ yarn-error.*
 
 # firebase
 *.ControleFirebase.js
+pilatesStudio/ControleFirebase.js
