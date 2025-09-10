@@ -9,6 +9,7 @@
     "web": "expo start -c --web"
   },
   "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
     "@expo/metro-runtime": "~5.0.4",
     "@react-navigation/bottom-tabs": "^7.4.7",
     "@react-navigation/native": "^7.1.17",
