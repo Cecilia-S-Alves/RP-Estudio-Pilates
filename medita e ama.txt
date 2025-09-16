@@ -11,6 +11,43 @@ telas de dados alunos adicionar alunos
 Painel
 gerenciar turmas
 
+BANCO DE dados
+
+alunos
+    aniversarios
+    nome
+    idade
+    quanto tempo entrao
+    data de matricula 
+    modalidade
+    particular ou projeto social ( convenio )
+    sexo 
+    patologia 
+    data de pagamento 
+    turma
+    endereço
+
+Painel
+    aniversarios
+    aniversário de matricula
+    fato legal 
+    dicas de instagram (ia)
+    calendário semanal (planner)
+    aulas totais do dia
+mensalidade 
+    nome 
+    valor 
+    data
+    vencido ou nao 
+turmas
+    modalidade
+    quantidade de alunos 
+    horario 
+    quais alunos
+    dividir por dia (presença)
+    
+
+
 App
 
 import { NavigationContainer } from '@react-navigation/native';
