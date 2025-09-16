@@ -5,11 +5,11 @@ https://icons.expo.fyi/Index
 https://www.canva.com/design/DAGvU3ihJgE/derggUGvODWyhcrqZMlPJQ/edit?utm_content=DAGvU3ihJgE&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 5 telas 
-telas das turmas
+telas das turmas gerenciar turmas
 verificar mensalidades (check box)
 telas de dados alunos adicionar alunos
 Painel
-gerenciar turmas
+
 
 BANCO DE dados
 
@@ -45,6 +45,7 @@ turmas
     horario 
     quais alunos
     dividir por dia (presença)
+    vagas livres
     
 
 
