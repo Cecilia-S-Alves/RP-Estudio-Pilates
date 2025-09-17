@@ -3,7 +3,6 @@ import { db } from '../ControleFirebase';
 import { collection,doc,getDocs } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { FlatList } from 'react-native-web';
-import Card from '../assets/card';
 
 export default function Alunos() {
   const [Alunos,setAlunos] = useState([]);
@@ -45,7 +44,8 @@ const styles = StyleSheet.create({
   texto: {
     fontFamily:'Overlock SC',
     color:'#4e5a5e',
-    fontSize: 80
+    fontSize: 70,
+    marginTop:20
   },
   texto1: {
     fontFamily:'Overlock SC',

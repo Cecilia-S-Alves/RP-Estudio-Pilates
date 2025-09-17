@@ -13,10 +13,12 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#939964',
     alignItems: 'center',
-    justifyContent: 'center',
+    
   },
   texto: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e'
+    color:'#4e5a5e',
+    fontSize: 70,
+    marginTop:20
   }
 });
