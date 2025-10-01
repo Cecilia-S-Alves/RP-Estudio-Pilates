@@ -25,12 +25,9 @@ export default function Addalunos() {
         try{
             await addDoc(collection(db, 'Alunos'),{
                 nome,
-                valor: parseFloat(valor),
-                imagem
+                idade: parseInt(idade)
             });
             setNome('');
-            setValor('');
-            setImagem('');
         }catch(error){
             console.log('erro no cadastro do aluno')
         } 
@@ -40,9 +37,7 @@ export default function Addalunos() {
                     <Text style={styles.titulo}>Cadastro Aluno</Text>
                     <View>
                         <TextInput style={styles.input} placeholder="Nome" inputMode='text' value={nome} onChangeText={setNome} />
-                        <TextInput style={styles.input} placeholder="Valor" inputMode='text' value={valor} onChangeText={setValor}/>
-                        <TextInput style={styles.input} placeholder="Imagem" inputMode='text' value={imagem} onChangeText={setImagem}/>
-                    </View>
+                                            </View>
                     <TouchableOpacity style={styles.bo} onPress={cadastrarAluno}>
                         <Text style={styles.tsxtbo}>Adicionar produto</Text>
                     </TouchableOpacity>
