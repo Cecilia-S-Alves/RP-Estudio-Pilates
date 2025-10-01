@@ -25,6 +25,7 @@ export default function Alunos() {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Alunos</Text>
+       <TouchableOpacity></TouchableOpacity>
        <FlatList data={Alunos} renderItem={({item}) => (
           <View style={styles.background}>
             <TouchableOpacity style={styles.touchContainer}>  

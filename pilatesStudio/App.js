@@ -6,6 +6,7 @@ import Alunos from './screens/Alunos';
 import Turmas from './screens/Turmas';
 import { Image } from 'react-native-web';
 import IconDash from './assets/iconDash';
+import Addalunos from './screens/Addalunos';
 
 export default function App() {
   const bottom = createBottomTabNavigator();
@@ -15,7 +16,7 @@ export default function App() {
       <bottom.Navigator>
         <bottom.Screen name='Painel' component={Painel} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Mensalidade' component={Mensalidade} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
-        <bottom.Screen name='Alunos' component={Alunos} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
+        <bottom.Screen name='Alunos' component={Addalunos} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Turmas' component={Turmas} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
       </bottom.Navigator>
     </NavigationContainer>

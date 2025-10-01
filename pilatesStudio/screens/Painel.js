@@ -8,6 +8,7 @@ const diaSemanaAtual = dataHoje.getDay()
 const dataSemanaFormatada = (diasSemana[diaSemanaAtual]);
 
 console.log(dataFormatada)
+
 export default function Painel() {
   return (
     <View style={styles.container}>
