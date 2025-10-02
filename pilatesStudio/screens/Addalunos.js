@@ -9,37 +9,63 @@ const dataFormatada = dataHoje.toLocaleDateString();
 var dataMensalidade = new Date(new Date(dataHoje).setMonth(dataHoje.getMonth() + 1));
 console.log(dataMensalidade);
 export default function Addalunos() {
-    const [aniversario,setAniversario] = useState("");
-    const [convenio,setConvenio] = useState("");
-    const [dataMatricula,setDataMatricula] = useState("");
-    const [dataPagamento,setDataPagamento] = useState("");
-    const [endereco,setEndereco] = useState("");
-    const [idade,setIdade] = useState("");
-    const [modalidade,SetModalidade] = useState("");
-    const [nome,setNome] = useState("");
-    const [patologia,setPatologia] = useState("");
-    const [sexo,setSexo] = useState("");
-    const [turma,setTurma] = useState("");
+    const [Aniversario,setAniversario] = useState("");
+    const [Convenio,setConvenio] = useState("");
+    const [DataMatricula,setDataMatricula] = useState("");
+    const [DataPagamento,setDataPagamento] = useState("");
+    const [Endereco,setEndereco] = useState("");
+    const [Idade,setIdade] = useState("");
+    const [Modalidade,SetModalidade] = useState("");
+    const [Nome,setNome] = useState("");
+    const [Patologia,setPatologia] = useState("");
+    const [Sexo,setSexo] = useState("");
+    const [TurmaUm,setTurmaUm] = useState("");
+    const [TurmaDois,setTurmaDois] = useState("");
 
     const cadastrarAluno = async () => {
         try{
             await addDoc(collection(db, 'Alunos'),{
-                nome,
-                idade: parseInt(idade)
+                Aniversario,
+                Convenio,
+                DataMatricula,
+                DataPagamento,
+                Endereco,
+                Idade:parseInt(Idade),
+                Modalidade,
+                Nome,
+                Patologia,
+                Sexo,
+                TurmaDois,
+                TurmaUm
             });
-            setNome('');
+            setAniversario(''),
+            setConvenio(''),
+            setDataMatricula(''),
+            setDataPagamento(''),
+            setEndereco(''),
+            setIdade(),
+            setNome(''),
+            setPatologia(''),
+            setSexo(''),
+            setTurmaDois(''),
+            setTurmaUm('')
+            alert('Aluno cadastrado')
         }catch(error){
             console.log('erro no cadastro do aluno')
+            alert("Erro ao cadastrar aluno, tente novamente")
         } 
     }
     return(
          <View style={styles.add}>
                     <Text style={styles.titulo}>Cadastro Aluno</Text>
                     <View>
-                        <TextInput style={styles.input} placeholder="Nome" inputMode='text' value={nome} onChangeText={setNome} />
+                        <TextInput style={styles.input} placeholder="Nome" inputMode='text' value={Nome} onChangeText={setNome} />
+                        <TextInput style={styles.input} placeholder="Idade" inputMode='text' value={Idade} onChangeText={setIdade} />
+                        <TextInput style={styles.input} placeholder="Convênio" inputMode='text' value={Convenio} onChangeText={setConvenio} />
+                        
                                             </View>
                     <TouchableOpacity style={styles.bo} onPress={cadastrarAluno}>
-                        <Text style={styles.tsxtbo}>Adicionar produto</Text>
+                        <Text style={styles.tsxtbo}>Adicionar Aluno</Text>
                     </TouchableOpacity>
                 </View>
     )
