@@ -49,11 +49,12 @@ export default function Addalunos() {
             setNome(''),
             setPatologia(''),
             setSexo(''),
+            SetModalidade(''),
             setTurmaDois(''),
             setTurmaUm('')
             alert('Aluno cadastrado')
         }catch(error){
-            console.log('erro no cadastro do aluno')
+            console.log('erro no cadastro do aluno'+error)
             alert("Erro ao cadastrar aluno, tente novamente")
         } 
     }
@@ -65,8 +66,9 @@ export default function Addalunos() {
                         <TextInput style={styles.input} placeholder="Idade" inputMode='text' value={Idade} onChangeText={setIdade} />
                         <TextInput style={styles.input} placeholder="Sexo" inputMode='text' value={Sexo} onChangeText={setSexo} />
                         <TextInput style={styles.input} placeholder="Convênio" inputMode='text' value={Convenio} onChangeText={setConvenio} />
+                        <TextInput style={styles.input} placeholder="Modalidade" inputMode='text' value={Modalidade} onChangeText={SetModalidade} />
                         <TextInput style={styles.input} placeholder="Aniversário (dd/mm/yyyy)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
-                        <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={setDataMatricula} onChangeText={setDataMatricula} />
+                        <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
                         <TextInput style={styles.input} placeholder="Próxima data de pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
                         <TextInput style={styles.input} placeholder="Endereço" inputMode='text' value={Endereco} onChangeText={setEndereco} />
                         <TextInput style={styles.input} placeholder="Patologia" inputMode='text' value={Patologia} onChangeText={setPatologia} />
@@ -91,7 +93,7 @@ const styles = StyleSheet.create({
     color:'#4e5a5e',
     fontSize: 55,
     alignSelf:'center',
-    marginTop:20
+    marginTop:75
   },
    add:{
         alignItems:'center',

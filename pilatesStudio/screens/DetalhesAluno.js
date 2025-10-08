@@ -1,53 +1,16 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
 import { db } from '../ControleFirebase';
-import { collection,doc,getDocs,onSnapshot, query } from "firebase/firestore";
+import { collection,doc,getDocs } from "firebase/firestore";
 import { useEffect, useState } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
-export default function Alunos() {
-  const navigation = useNavigation();
-  const [Alunos,setAlunos] = useState([]);
-  
-  useEffect(() => {
-        async function carregarAlunos() {
-            try{
-             /*    const querySnapshot = await getDocs(collection(db,'Alunos'));
-                const lista = [];
-                querySnapshot.forEach((doc) => {
-                    lista.push({id: doc.id, ...doc.data()});
-                }); */
-                let lista = []
-                const databaseQuery = collection(db,"Alunos")
-                onSnapshot(databaseQuery, (p) => {
-                  lista = []
-                  p.forEach(doc => {
-                    const informacoes = {id: doc.id,... doc.data()}
-                    lista.push(informacoes)
-                    console.log(informacoes)
-                  })
-                  lista.forEach(informacoes => {
-                    setAlunos(lista);
-                  })
-                })
-
-
-                console.log(lista)
-            } catch(error){
-                console.log('erro ao buscar alunos',error);
-            }
-        }
-        carregarAlunos();
-    },
-    []);
-  return (
-    <View style={styles.container}>
-      <Text style={styles.texto}>Alunos</Text>
-       <TouchableOpacity onPress={()=> navigation.navigate("AddAluno")} style={styles.background1}><Text style={styles.texto1}>Adicionar aluno</Text></TouchableOpacity>
-       <FlatList data={Alunos} renderItem={({item}) => (
-          <View style={styles.background}>
-            <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("DetalhesAluno", {item})}>  
-                <View style={styles.card}>
-                  <Text style={styles.texto1}>{item.Nome}</Text>
+export default function DetalhesAluno() {
+    const route = useRoute();
+    const {item} = route.params;
+    return(
+        <View style={styles.container}>
+        <Text style={styles.texto}>{item.Nome}</Text>
+        <View style={styles.card}>
                   <View style={styles.nomedaview}>
                     <View style={{flexDirection: 'row'}}>
                       <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Idade</Text>
@@ -67,15 +30,9 @@ export default function Alunos() {
                     <Text style={styles.texto2}>: {item.TurmaUm}, {item.TurmaDois}</Text>
                     </View>
                 </View>
-            </TouchableOpacity>
-          </View>
-        )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={1} />
-    </View>
-    
-  );
-
+        </View>
+    )
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -87,7 +44,9 @@ const styles = StyleSheet.create({
     fontFamily:'Overlock SC',
     color:'#4e5a5e',
     fontSize: 70,
-    marginTop:20
+    marginTop:75,
+    textAlign:'center',
+    fontWeight:'bold'
   },
   texto1: {
     fontFamily:'Overlock SC',
