@@ -7,16 +7,26 @@ import Turmas from './screens/Turmas';
 import { Image } from 'react-native-web';
 import IconDash from './assets/iconDash';
 import Addalunos from './screens/Addalunos';
+import { createStackNavigator } from '@react-navigation/stack';
 
 export default function App() {
   const bottom = createBottomTabNavigator();
+  function AlunoStack(){
+    const stack = createStackNavigator();
+
+    <stack.Navigator>
+      <Text>aaaaaaaaaaa</Text>
+        <stack.Screen name='Aluno' component={Alunos}/>
+        <stack.Screen name='AddAluno' component={Addalunos}/>
+    </stack.Navigator>
+  }
   return (
     
     <NavigationContainer>
       <bottom.Navigator>
         <bottom.Screen name='Painel' component={Painel} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Mensalidade' component={Mensalidade} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
-        <bottom.Screen name='Alunos' component={Alunos} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
+        <bottom.Screen name='Alunos' component={AlunoStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Turmas' component={Turmas} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
       </bottom.Navigator>
     </NavigationContainer>

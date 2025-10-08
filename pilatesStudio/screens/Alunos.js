@@ -3,7 +3,7 @@ import { db } from '../ControleFirebase';
 import { collection,doc,getDocs } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
-
+import Addalunos from './Addalunos';
 export default function Alunos() {
   const navigation = useNavigation();
   const [Alunos,setAlunos] = useState([]);
@@ -27,7 +27,7 @@ export default function Alunos() {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Alunos</Text>
-       <TouchableOpacity onPress={()=> navigation.navigate('Addalunos')} style={styles.background1}><Text style={styles.texto1}>Adicionar aluno</Text></TouchableOpacity>
+       <TouchableOpacity onPress={()=> navigation.navigate(Addalunos)} style={styles.background1}><Text style={styles.texto1}>Adicionar aluno</Text></TouchableOpacity>
        <FlatList data={Alunos} renderItem={({item}) => (
           <View style={styles.background}>
             <TouchableOpacity style={styles.touchContainer}>  
