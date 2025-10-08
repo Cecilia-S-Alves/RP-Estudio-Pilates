@@ -2,8 +2,10 @@ import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native'
 import { db } from '../ControleFirebase';
 import { collection,doc,getDocs } from "firebase/firestore";
 import { useEffect, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Alunos() {
+  const navigation = useNavigation();
   const [Alunos,setAlunos] = useState([]);
   
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Alunos() {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Alunos</Text>
-       <TouchableOpacity></TouchableOpacity>
+       <TouchableOpacity onPress={()=> navigation.navigate('Addalunos')} style={styles.background1}><Text style={styles.texto1}>Adicionar aluno</Text></TouchableOpacity>
        <FlatList data={Alunos} renderItem={({item}) => (
           <View style={styles.background}>
             <TouchableOpacity style={styles.touchContainer}>  
@@ -46,9 +48,9 @@ export default function Alunos() {
                     <Text style={styles.texto2}>: {item.Patologia}</Text>
                   </View>
                     <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turma</Text>
-                    <Text style={styles.texto2}>: {item.Turma}</Text>
-                  </View>
+                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas</Text>
+                    <Text style={styles.texto2}>: {item.TurmaUm}, {item.TurmaDois}</Text>
+                    </View>
                 </View>
             </TouchableOpacity>
           </View>
@@ -92,7 +94,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#b99470',
     borderRadius: 15,
     marginBottom: 20,
-    
+  },
+  background1: {
+    alignSelf:'center',
+    width: 380,
+    height: 55,
+    backgroundColor: '#b99470',
+    borderRadius: 15,
+    marginBottom: 20,
   },
   card:{
     backgroundColor: '',
