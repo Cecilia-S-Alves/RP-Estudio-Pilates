@@ -64,7 +64,7 @@ export default function Alunos() {
                   </View>
                     <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas</Text>
-                    <Text style={styles.texto2}>: {item.TurmaUm}, {item.TurmaDois}</Text>
+                    <Text style={styles.texto2}>: {item.TurmaUm}</Text><Text style={styles.texto2}>, {item.TurmaDois}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
   background: {
     alignSelf:'center',
     width: 380,
-    height: 200,
+    height: 220,
     backgroundColor: '#b99470',
     borderRadius: 15,
     marginBottom: 20,

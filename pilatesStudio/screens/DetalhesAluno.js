@@ -1,16 +1,19 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity, ScrollView } from 'react-native';
 import { db } from '../ControleFirebase';
 import { collection,doc,getDocs } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
 
 export default function DetalhesAluno() {
     const route = useRoute();
     const {item} = route.params;
     return(
+      <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#b86516'}}>
         <View style={styles.container}>
         <Text style={styles.texto}>{item.Nome}</Text>
-        <View style={styles.card}>
+          <View style={styles.background}>
                   <View style={styles.nomedaview}>
                     <View style={{flexDirection: 'row'}}>
                       <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Idade</Text>
@@ -21,22 +24,47 @@ export default function DetalhesAluno() {
                       <Text style={styles.texto2}>: {item.Sexo}</Text>
                     </View>
                   </View>
-                  <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Patologia</Text>
-                    <Text style={styles.texto2}>: {item.Patologia}</Text>
+                  <View>
+                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Patologia:</Text>
+                    <Text style={styles.texto2}>{item.Patologia}</Text>
                   </View>
                     <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas</Text>
-                    <Text style={styles.texto2}>: {item.TurmaUm}, {item.TurmaDois}</Text>
+                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas:</Text>
+                    <Text style={styles.texto2}> {item.TurmaUm}</Text><Text style={styles.texto2}>, {item.TurmaDois}</Text>
                     </View>
+                    <View style={{flexDirection: 'row'}}>
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Convênio:</Text>
+                    <Text style={styles.texto2}> {item.Convenio}</Text>
+                    </View>
+                    <View style={{flexDirection: 'row'}}>
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Modalidade:</Text>
+                    <Text style={styles.texto2}> {item.Modalidade}</Text>
+                    </View>
+                    <View>
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Endereço:</Text>
+                    <Text style={styles.texto2}>{item.Endereco}</Text>
+                    </View>
+                    <View >
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Data de aniversário:</Text>
+                    <Text style={styles.texto2}>{item.Aniversario}</Text>
+                    </View>
+                    <View >
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Data da mensalidade:</Text>
+                    <Text style={styles.texto2}>{item.DataPagamento}</Text>
+                    </View>
+                    <View >
+                    <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Data de matrícula:</Text>
+                    <Text style={styles.texto2}>{item.DataMatricula}</Text>
+                    </View>
+                    
                 </View>
         </View>
+        </ScrollView>
     )
 }
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#b86516',
     alignItems: 'center',
     
   },
@@ -62,26 +90,12 @@ const styles = StyleSheet.create({
 
   },
   background: {
+    flex:1,
     alignSelf:'center',
-    width: 380,
-    height: 200,
+    padding:5,
     backgroundColor: '#b99470',
     borderRadius: 15,
     marginBottom: 20,
-  },
-  background1: {
-    alignSelf:'center',
-    width: 380,
-    height: 55,
-    backgroundColor: '#b99470',
-    borderRadius: 15,
-    marginBottom: 20,
-  },
-  card:{
-    backgroundColor: '',
-    flex: 1,
-    alignItems: 'center',
-    
   },
   nomedaview:{
     flexDirection: 'row',

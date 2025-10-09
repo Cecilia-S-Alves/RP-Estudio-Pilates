@@ -69,7 +69,7 @@ export default function Addalunos() {
                         <TextInput style={styles.input} placeholder="Modalidade" inputMode='text' value={Modalidade} onChangeText={SetModalidade} />
                         <TextInput style={styles.input} placeholder="Aniversário (dd/mm/yyyy)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
                         <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
-                        <TextInput style={styles.input} placeholder="Próxima data de pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
+                        <TextInput style={styles.input} placeholder="Próximo pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
                         <TextInput style={styles.input} placeholder="Endereço" inputMode='text' value={Endereco} onChangeText={setEndereco} />
                         <TextInput style={styles.input} placeholder="Patologia" inputMode='text' value={Patologia} onChangeText={setPatologia} />
                         <TextInput style={styles.input} placeholder="Turma um (código)" inputMode='text' value={TurmaUm} onChangeText={setTurmaUm} />
