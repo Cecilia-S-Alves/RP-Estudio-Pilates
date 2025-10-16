@@ -3,6 +3,7 @@ import { db } from "../ControleFirebase";
 import { useState } from "react";
 import { collection, addDoc } from "firebase/firestore";
 import { ScrollView } from "react-native";
+import { Picker } from "@react-native-picker/picker";
 
 const dataHoje = new Date()
 const dataFormatada = dataHoje.toLocaleDateString();
@@ -23,6 +24,14 @@ export default function Addalunos() {
     const [Sexo,setSexo] = useState("");
     const [TurmaUm,setTurmaUm] = useState("");
     const [TurmaDois,setTurmaDois] = useState("");
+    const [Preco,setPreco] = useState();
+
+    const Preco1 = ({Modalidade}) =>{
+        if (Modalidade === "Pilates no equipamentos x1"){
+                Preco = parseFloat(250.00)
+        }
+    }
+  
 
     const cadastrarAluno = async () => {
         try{
@@ -33,7 +42,7 @@ export default function Addalunos() {
                 DataPagamento,
                 Endereco,
                 Idade:parseInt(Idade),
-                Modalidade,
+                Modalidade:Modalidade,
                 Nome,
                 Patologia,
                 Sexo,
@@ -58,15 +67,68 @@ export default function Addalunos() {
             alert("Erro ao cadastrar aluno, tente novamente")
         } 
     }
+    const cadastrarMensalidade = async () => {
+        try{
+            await addDoc(collection(db, 'Mensalidade'),{
+                DataPagamento,
+                Modalidade,
+                Nome,
+                Preco:parseFloat(Preco1())
+                
+            });
+            setDataPagamento(''),
+            setNome(''),
+            SetModalidade('')
+            setPreco()
+                   
+            }catch(error){
+            console.log('erro no cadastro da Mensalidade'+error)
+            alert("Erro ao cadastrar Mensalidade, tente novamente")
+        } 
+    }
+    const paraPress = () =>{
+        cadastrarAluno();
+        cadastrarMensalidade();
+    };
     return(
          <View style={styles.add}>
                     <Text style={styles.titulo}>Cadastro Aluno</Text>
                     <ScrollView>
+                        
                         <TextInput style={styles.input} placeholder="Nome" inputMode='text' value={Nome} onChangeText={setNome} />
                         <TextInput style={styles.input} placeholder="Idade" inputMode='text' value={Idade} onChangeText={setIdade} />
-                        <TextInput style={styles.input} placeholder="Sexo" inputMode='text' value={Sexo} onChangeText={setSexo} />
-                        <TextInput style={styles.input} placeholder="Convênio" inputMode='text' value={Convenio} onChangeText={setConvenio} />
-                        <TextInput style={styles.input} placeholder="Modalidade" inputMode='text' value={Modalidade} onChangeText={SetModalidade} />
+                        <Text style={styles.texto}>Sexo:</Text>
+                        <Picker style={styles.input1}
+                        selectedValue={Sexo}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setSexo(itemValue)
+                        }>
+                        <Picker.Item label="Feminino" value="F" />
+                        <Picker.Item label="Masculino" value="M" />
+                        <Picker.Item label="Outro" value="o" />
+                        </Picker>
+                        <Text style={styles.texto}> Convenio:</Text>
+                        <Picker style={styles.input1}
+                        selectedValue={Convenio}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setConvenio(itemValue)
+                        }>
+                        <Picker.Item label="Particular" value="Particular" />
+                        <Picker.Item label="Projeto social" value="Projeto social" />
+                        </Picker>
+                        <Text style={styles.texto}> Modalidade:</Text>
+                        <Picker style={styles.input1}
+                        selectedValue={Modalidade}
+                        onValueChange={(itemValue, itemIndex) =>
+                            SetModalidade(itemValue)
+                        }>
+                        <Picker.Item label="Pilates no equipamentos x1" value="Pilates no equipamentos x1" />
+                        <Picker.Item label="Pilates no equipamentos x2" value="Pilates no equipamentos x2" />
+                        <Picker.Item label="Pilates no solo x1" value="Pilates no solo x1" />
+                        <Picker.Item label="Pilates no solo x2" value="Pilates no solo x2" />
+                        <Picker.Item label="Pilates funcional x1" value="Pilates funcional x1" />
+                        <Picker.Item label="Pilates funcional x2" value="Pilates funcional x2" />
+                        </Picker>
                         <TextInput style={styles.input} placeholder="Aniversário (dd/mm/yyyy)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
                         <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
                         <TextInput style={styles.input} placeholder="Próximo pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
@@ -74,7 +136,7 @@ export default function Addalunos() {
                         <TextInput style={styles.input} placeholder="Patologia" inputMode='text' value={Patologia} onChangeText={setPatologia} />
                         <TextInput style={styles.input} placeholder="Turma um (código)" inputMode='text' value={TurmaUm} onChangeText={setTurmaUm} />
                         <TextInput style={styles.input} placeholder="Turma dois (código)" inputMode='text' value={TurmaDois} onChangeText={setTurmaDois} />
-                    <TouchableOpacity style={styles.bo} onPress={cadastrarAluno}>
+                    <TouchableOpacity style={styles.bo} onPress={paraPress}>
                         <Text style={styles.tsxtbo}>Adicionar Aluno</Text>
                     </TouchableOpacity>
                     </ScrollView>
@@ -109,6 +171,15 @@ const styles = StyleSheet.create({
         color:'#4e5a5e',
         padding:10,
     },
+    input1:{
+        fontSize:30,
+        borderWidth:1,
+        borderColor:'#4e5a5e',
+        marginLeft:20,
+        marginRight:20,
+        color:'#4e5a5e',
+        padding:10,
+    },
     bo:{
         width:'80%',
         backgroundColor:'#4e5a5e',
@@ -122,5 +193,11 @@ const styles = StyleSheet.create({
         fontSize:35,
         textAlignVertical:'center',
         margin:1
-    }
+    },
+    texto:{
+        fontSize:30,
+        margin:15,
+        color:'#4b2810ff',
+        padding:5,
+    },
 });

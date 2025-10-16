@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-
 export default function DetalhesAluno() {
     const route = useRoute();
     const {item} = route.params;
+ 
     return(
       <ScrollView contentContainerStyle={{flexGrow: 1, backgroundColor: '#b86516'}}>
+        
         <View style={styles.container}>
         <Text style={styles.texto}>{item.Nome}</Text>
           <View style={styles.background}>
@@ -38,7 +39,7 @@ export default function DetalhesAluno() {
                     </View>
                     <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Modalidade:</Text>
-                    <Text style={styles.texto2}> {item.Modalidade}</Text>
+                    <Text style={styles.texto2}> {item.Modalidade} </Text>
                     </View>
                     <View>
                     <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Endereço:</Text>
