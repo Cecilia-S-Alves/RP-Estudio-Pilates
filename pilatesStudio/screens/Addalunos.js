@@ -25,13 +25,10 @@ export default function Addalunos() {
     const [TurmaUm,setTurmaUm] = useState("");
     const [TurmaDois,setTurmaDois] = useState("");
     const [Preco,setPreco] = useState();
+    let [Status,setStatus] = useState("");
+    Status = "Não Pago"
 
-    const Preco1 = ({Modalidade}) =>{
-        if (Modalidade === "Pilates no equipamentos x1"){
-                Preco = parseFloat(250.00)
-        }
-    }
-  
+    
 
     const cadastrarAluno = async () => {
         try{
@@ -42,7 +39,7 @@ export default function Addalunos() {
                 DataPagamento,
                 Endereco,
                 Idade:parseInt(Idade),
-                Modalidade:Modalidade,
+                Modalidade,
                 Nome,
                 Patologia,
                 Sexo,
@@ -71,15 +68,16 @@ export default function Addalunos() {
         try{
             await addDoc(collection(db, 'Mensalidade'),{
                 DataPagamento,
-                Modalidade,
                 Nome,
-                Preco:parseFloat(Preco1())
+                Preco,
+                Status,
                 
             });
             setDataPagamento(''),
             setNome(''),
-            SetModalidade('')
-            setPreco()
+
+            setPreco(),
+            setStatus('Não Pago')
                    
             }catch(error){
             console.log('erro no cadastro da Mensalidade'+error)
@@ -107,7 +105,7 @@ export default function Addalunos() {
                         <Picker.Item label="Masculino" value="M" />
                         <Picker.Item label="Outro" value="o" />
                         </Picker>
-                        <Text style={styles.texto}> Convenio:</Text>
+                        <Text style={styles.texto}> Convênio:</Text>
                         <Picker style={styles.input1}
                         selectedValue={Convenio}
                         onValueChange={(itemValue, itemIndex) =>
@@ -120,7 +118,11 @@ export default function Addalunos() {
                         <Picker style={styles.input1}
                         selectedValue={Modalidade}
                         onValueChange={(itemValue, itemIndex) =>
-                            SetModalidade(itemValue)
+                            {SetModalidade(itemValue)
+                            /* Preco = PrecoFunçao(Modalidade)
+                            setPreco(Preco) */}
+                        
+
                         }>
                         <Picker.Item label="Pilates no equipamentos x1" value="Pilates no equipamentos x1" />
                         <Picker.Item label="Pilates no equipamentos x2" value="Pilates no equipamentos x2" />
@@ -129,6 +131,7 @@ export default function Addalunos() {
                         <Picker.Item label="Pilates funcional x1" value="Pilates funcional x1" />
                         <Picker.Item label="Pilates funcional x2" value="Pilates funcional x2" />
                         </Picker>
+                        <TextInput style={styles.input} placeholder="Preço" inputMode='text' value={Preco} onChangeText={setPreco} />
                         <TextInput style={styles.input} placeholder="Aniversário (dd/mm/yyyy)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
                         <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
                         <TextInput style={styles.input} placeholder="Próximo pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />

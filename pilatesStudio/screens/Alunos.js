@@ -23,7 +23,6 @@ export default function Alunos() {
                   p.forEach(doc => {
                     const informacoes = {id: doc.id,... doc.data()}
                     lista.push(informacoes)
-                    console.log(informacoes)
                   })
                   lista.forEach(informacoes => {
                     setAlunos(lista);
@@ -31,7 +30,6 @@ export default function Alunos() {
                 })
 
 
-                console.log(lista)
             } catch(error){
                 console.log('erro ao buscar alunos',error);
             }
