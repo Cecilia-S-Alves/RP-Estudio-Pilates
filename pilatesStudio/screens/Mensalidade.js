@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
 import { useState,useEffect } from 'react';
 import { db} from '../ControleFirebase';
-import { collection,onSnapshot } from 'firebase/firestore';
+import { collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
 
 export default function Mensalidade() {
-    const [Mensalidade,SetMensalidade] = useState([]);
+    const [Mensalidade,setMensalidade] = useState([]);
     
     useEffect(() => {
           async function carregarMensalidade() {
@@ -18,7 +18,7 @@ export default function Mensalidade() {
                       lista.push(informacoes)
                     })
                     lista.forEach(informacoes => {
-                      SetMensalidade(lista);
+                      setMensalidade(lista);
                     })
                   })
   
@@ -30,6 +30,15 @@ export default function Mensalidade() {
           carregarMensalidade();
       },
       []);
+      const Atualizar = async (item)=>{
+        try{
+          await updateDoc(doc(db,"Mensalidade",item.id),{Status:"Pago"});
+          setMensalidade(prev => prev.map(p=>p.id === item.id?{...p,Status:"Pago"}:p));
+        }catch (error){
+          console.log("Erro ao atualizar o Status",error);
+        }
+      }
+  
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Mensalidade</Text>
@@ -53,13 +62,13 @@ export default function Mensalidade() {
                           <Text style={styles.texto2}>: {item.Status}</Text>
                         </View>
                       </View>
-                      <TouchableOpacity style={styles.botao}><Text style={styles.textobotao}>Pago</Text></TouchableOpacity>
+                      <TouchableOpacity style={styles.botao} onPress={Atualizar}><Text style={styles.textobotao}>Pago</Text></TouchableOpacity>
                   </View>
                 </View>
               )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={1} />
           </View>
-  );
-}
+  );}
+
 
 const styles = StyleSheet.create({
   container: {
