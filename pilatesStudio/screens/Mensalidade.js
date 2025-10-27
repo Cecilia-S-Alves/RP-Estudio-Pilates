@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TouchableOpacity,} from 'react-native';
 import { useState,useEffect } from 'react';
 import { db} from '../ControleFirebase';
+import { Firestore } from 'firebase/firestore';
 import { collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
 
 export default function Mensalidade() {
@@ -30,14 +31,20 @@ export default function Mensalidade() {
           carregarMensalidade();
       },
       []);
-      const Atualizar = async (item)=>{
+        const Atualizar = async (item)=>{
+          console.log(item)
+          console.log(item.id)
         try{
           await updateDoc(doc(db,"Mensalidade",item.id),{Status:"Pago"});
           setMensalidade(prev => prev.map(p=>p.id === item.id?{...p,Status:"Pago"}:p));
         }catch (error){
           console.log("Erro ao atualizar o Status",error);
         }
-      }
+
+
+
+     }
+
   
   return (
     <View style={styles.container}>
@@ -62,7 +69,7 @@ export default function Mensalidade() {
                           <Text style={styles.texto2}>: {item.Status}</Text>
                         </View>
                       </View>
-                      <TouchableOpacity style={styles.botao} onPress={Atualizar}><Text style={styles.textobotao}>Pago</Text></TouchableOpacity>
+                      <TouchableOpacity style={styles.botao} onPress={() =>Atualizar({item})}><Text style={styles.textobotao}>Pago</Text></TouchableOpacity>
                   </View>
                 </View>
               )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={1} />

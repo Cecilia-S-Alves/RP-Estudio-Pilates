@@ -118,11 +118,7 @@ export default function Addalunos() {
                         <Picker style={styles.input1}
                         selectedValue={Modalidade}
                         onValueChange={(itemValue, itemIndex) =>
-                            {SetModalidade(itemValue)
-                            /* Preco = PrecoFunçao(Modalidade)
-                            setPreco(Preco) */}
-                        
-
+                            {SetModalidade(itemValue)}
                         }>
                         <Picker.Item label="Pilates no equipamentos x1" value="Pilates no equipamentos x1" />
                         <Picker.Item label="Pilates no equipamentos x2" value="Pilates no equipamentos x2" />
