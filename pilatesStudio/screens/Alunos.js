@@ -3,10 +3,12 @@ import { db } from '../ControleFirebase';
 import { collection,doc,getDocs,onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native';
 
 export default function Alunos() {
   const navigation = useNavigation();
   const [Alunos,setAlunos] = useState([]);
+  const [nameSeach,setNameSeach] = useState('')
   
   useEffect(() => {
         async function carregarAlunos() {
@@ -41,7 +43,8 @@ export default function Alunos() {
     <View style={styles.container}>
       <Text style={styles.texto}>Alunos</Text>
        <TouchableOpacity onPress={()=> navigation.navigate("AddAluno")} style={styles.background1}><Text style={styles.texto1}>Adicionar aluno</Text></TouchableOpacity>
-       <FlatList data={Alunos} renderItem={({item}) => (
+       <TextInput style={styles.background1} placeholder="Pesquisar..." inputMode='text' value={nameSeach} onChangeText={setNameSeach} ></TextInput>
+       <FlatList data={Alunos.filter(item =>item.Nome.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(nameSeach.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')))} renderItem={({item}) => (
           <View style={styles.background}>
             <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("DetalhesAluno", {item})}>  
                 <View style={styles.card}>
@@ -57,8 +60,8 @@ export default function Alunos() {
                     </View>
                   </View>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Patologia</Text>
-                    <Text style={styles.texto2}>: {item.Patologia}</Text>
+                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Patologia:</Text>
+                    <Text style={styles.texto2}> {item.Patologia}</Text>
                   </View>
                     <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas</Text>
