@@ -1,11 +1,10 @@
 import { StyleSheet, Text, View, FlatList, TouchableOpacity,} from 'react-native';
 import { useState,useEffect } from 'react';
 import { db} from '../ControleFirebase';
+import { Firestore } from 'firebase/firestore';
 import { collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
 
-export default function Mensalidade() {
-    const navigation = useNavigation();
+export default function MensalidadesPagas() {
     const [Mensalidade,setMensalidade] = useState([]);
     
     useEffect(() => {
@@ -34,14 +33,9 @@ export default function Mensalidade() {
         const Atualizar = async (item)=>{
           console.log(item)
           console.log(item.item.id)
-          const dadosdata = item.item.DataPagamento.split("/")
-          const data = new Date(dadosdata[2],dadosdata[1]-1,dadosdata[0])
-          var dataMensalidade = new Date(new Date(data).setMonth(data.getMonth() + 1));
-          const dataFormatada = dataMensalidade.toLocaleDateString();
         try{
-          await updateDoc(doc(db,"Mensalidade",item.item.id),{Status:"Pago"});
-          setMensalidade(prev => prev.map(p=>p.id === item.id?{...p,Status:"Pago"}:p));
-          updateDoc(doc(db,"Mensalidade",item.item.id),{DataPagamento:dataFormatada})
+          await updateDoc(doc(db,"Mensalidade",item.item.id),{Status:"Não Pago"});
+          setMensalidade(prev => prev.map(p=>p.id === item.id?{...p,Status:"Não Pago"}:p));
         }catch (error){
           console.log("Erro ao atualizar o Status",error);
         }
@@ -53,9 +47,8 @@ export default function Mensalidade() {
   
   return (
     <View style={styles.container}>
-      <Text style={styles.texto}>Mensalidade</Text>
-      <TouchableOpacity onPress={()=> navigation.navigate("MensalidadesPagas")} style={styles.background1}><Text style={styles.texto1}>Ver já Pagas</Text></TouchableOpacity>
-      <FlatList data={Mensalidade?.filter(data => data?.Status === "Não Pago")} renderItem={({ item }) => (
+      <Text style={styles.texto}>Pagos</Text>
+      <FlatList data={Mensalidade?.filter(data => data?.Status === "Pago")} renderItem={({ item }) => (
 
         <View style={styles.background}>
 
@@ -77,12 +70,12 @@ export default function Mensalidade() {
                 <Text style={styles.texto2}>: {item.Status}</Text>
               </View>
             </View>
-            <TouchableOpacity style={styles.botao} onPress={() => Atualizar({ item })}><Text style={styles.textobotao}>Pago</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.botao} onPress={() => Atualizar({ item })}><Text style={styles.textobotao}>Não Pago</Text></TouchableOpacity>
           </View>
         </View>
       )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={1} />
     </View>
-    
+  
   );}
 
 
@@ -97,7 +90,7 @@ const styles = StyleSheet.create({
     fontFamily:'Overlock SC',
     color:'#4e5a5e',
     fontSize: 70,
-    marginTop:20
+    marginTop:70
   },
   texto1: {
     fontFamily:'Overlock SC',
