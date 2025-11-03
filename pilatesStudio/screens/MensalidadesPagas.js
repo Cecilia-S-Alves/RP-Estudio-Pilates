@@ -39,9 +39,6 @@ export default function MensalidadesPagas() {
         }catch (error){
           console.log("Erro ao atualizar o Status",error);
         }
-
-
-
      }
 
   
@@ -84,7 +81,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#cde2db',
     alignItems: 'center',
-   
   },
   texto: {
     fontFamily:'Overlock SC',
@@ -103,7 +99,6 @@ const styles = StyleSheet.create({
     fontFamily:'Overlock SC',
     color:'#4e5a5e',
     fontSize: 32,
-
   },
   textobotao: {
     fontFamily:'Overlock SC',
@@ -111,7 +106,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     textAlign:'center',
     fontWeight:'bold'
-
   },
   background: {
     alignSelf:'center',

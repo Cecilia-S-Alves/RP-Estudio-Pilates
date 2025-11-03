@@ -1,8 +1,8 @@
-import { StyleSheet, Text, View, FlatList, TouchableOpacity,} from 'react-native';
-import { useState,useEffect } from 'react';
-import { db} from '../ControleFirebase';
-import { collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity,} from 'react-native';
+import {useState,useEffect } from 'react';
+import {db} from '../ControleFirebase';
+import {collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
+import {useNavigation } from '@react-navigation/native';
 
 export default function Mensalidade() {
     const navigation = useNavigation();
@@ -31,6 +31,7 @@ export default function Mensalidade() {
           carregarMensalidade();
       },
       []);
+
         const Atualizar = async (item)=>{
           console.log(item)
           console.log(item.item.id)
@@ -45,9 +46,6 @@ export default function Mensalidade() {
         }catch (error){
           console.log("Erro ao atualizar o Status",error);
         }
-
-
-
      }
 
   
