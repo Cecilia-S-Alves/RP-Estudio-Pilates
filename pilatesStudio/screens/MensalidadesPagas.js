@@ -114,6 +114,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#939964',
     borderRadius: 15,
     marginBottom: 20,
+    elevation: 5
   },
   botao: {
     alignSelf:'center',

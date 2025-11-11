@@ -45,16 +45,23 @@ export default function Turmas() {
     <View style={styles.container}>
       <Text style={styles.texto}>Turmas</Text>
     <TouchableOpacity onPress={()=> navigation.navigate("InfoTurmas")} style={styles.background1}><Text style={styles.texto1}>Como funciona?</Text></TouchableOpacity>
-            <Picker style={styles.background
-              
-            }
+            <Picker style={styles.background1}
                         selectedValue={groupSeach}
                         onValueChange={(itemValue, itemIndex) =>
                             setGroupSeach(itemValue)
                         }>
-                        <Picker.Item label="Feminino" value="7h00" />
-                        <Picker.Item label="Masculino" value="18h00" />
-                        <Picker.Item label="Outro" value="20h00" />
+                        <Picker.Item label="Pesquise..." value="h" />
+                        <Picker.Item label="07h00" value="07h00" />
+                        <Picker.Item label="07h30" value="07h30" />
+                        <Picker.Item label="08h00" value="08h00" />
+                        <Picker.Item label="08h30" value="08h30" />
+                        <Picker.Item label="09h00" value="09h00" />
+                        <Picker.Item label="09h30" value="09h30" />
+                        <Picker.Item label="16h00" value="16h00" />
+                        <Picker.Item label="17h00" value="17h00" />
+                        <Picker.Item label="18h00" value="18h00" />
+                        <Picker.Item label="19h00" value="19h00" />
+                        <Picker.Item label="20h00" value="20h00" />
                         </Picker>
              <FlatList data={Turma.filter(item =>item.Horario.normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(groupSeach.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')))}  renderItem={({item}) => (
               <View style={styles.background}>
@@ -87,6 +94,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#939964',
     alignItems: 'center',
     
+    
   },
   texto: {
     fontFamily:'Overlock SC',
@@ -114,6 +122,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#cde2db',
     borderRadius: 15,
     marginBottom: 20,
+    elevation: 5
+    
   },
   background1: {
     alignSelf:'center',

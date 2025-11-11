@@ -60,8 +60,8 @@ export default function Alunos() {
                     </View>
                   </View>
                   <View style={{flexDirection: 'row'}}>
-                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Patologia:</Text>
-                    <Text style={styles.texto2}> {item.Patologia}</Text>
+                    <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Convênio:</Text>
+                    <Text style={styles.texto2}> {item.Convenio}</Text>
                   </View>
                     <View style={{flexDirection: 'row'}}>
                     <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Turmas</Text>
@@ -92,14 +92,14 @@ const styles = StyleSheet.create({
   },
   texto1: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e',
+    color:'#000000ff',
     fontSize: 38,
     textAlign: 'center',
     fontWeight: 'bold'
   },
     texto2: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e',
+    color:'#000000ff',
     fontSize: 32,
 
   },
@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#b99470',
     borderRadius: 15,
     marginBottom: 20,
+    elevation:5
   },
   background1: {
     alignSelf:'center',
