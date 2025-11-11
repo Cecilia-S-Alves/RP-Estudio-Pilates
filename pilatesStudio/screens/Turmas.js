@@ -4,12 +4,13 @@ import { collection,doc,getDocs,onSnapshot, query } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { orderBy } from 'firebase/firestore';
-
+import { Picker } from '@react-native-picker/picker';
 
 export default function Turmas() {
   const navigation = useNavigation();
-    const [Turma,setTurma] = useState([]);
-    const [groupSeach,setGroupSeach] = useState('')
+  const [Turma,setTurma] = useState([]);
+  const [searchTime,setSearchTime] = useState('')
+  const [groupSeach,setGroupSeach] = useState('')
     
     useEffect(() => {
           async function carregarTurma() {
@@ -44,10 +45,20 @@ export default function Turmas() {
     <View style={styles.container}>
       <Text style={styles.texto}>Turmas</Text>
     <TouchableOpacity onPress={()=> navigation.navigate("InfoTurmas")} style={styles.background1}><Text style={styles.texto1}>Como funciona?</Text></TouchableOpacity>
-           <TextInput style={styles.background1} placeholder="Pesquisar..." inputMode='text' value={groupSeach} onChangeText={setGroupSeach} ></TextInput>
-           <FlatList data={Turma.filter(item =>item.Codigo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(groupSeach.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')))}  renderItem={({item}) => (
+            <Picker style={styles.background
+              
+            }
+                        selectedValue={groupSeach}
+                        onValueChange={(itemValue, itemIndex) =>
+                            setGroupSeach(itemValue)
+                        }>
+                        <Picker.Item label="Feminino" value="7h00" />
+                        <Picker.Item label="Masculino" value="18h00" />
+                        <Picker.Item label="Outro" value="20h00" />
+                        </Picker>
+             <FlatList data={Turma.filter(item =>item.Horario.normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes(groupSeach.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')))}  renderItem={({item}) => (
               <View style={styles.background}>
-                <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("DetalhesTurma", {item})}>  
+                <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("DTurma", {item})}>  
                     <View style={styles.card}>
                       <Text style={styles.texto1}>{item.Codigo}</Text>
                         <View style={{flexDirection: 'row'}}>
