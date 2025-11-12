@@ -11,6 +11,13 @@ const diasSemana = ["Domingo","Segunda","Terça","Quarta","Quinta","Sexta","Sáb
 const diaSemanaAtual = dataHoje.getDay()
 const dataSemanaFormatada = (diasSemana[diaSemanaAtual]);
 
+let auladia = ""
+if (diaSemanaAtual===1 || diaSemanaAtual===3 ){
+  auladia = "1- Segunda e Quarta"
+}else if (diaSemanaAtual===2 || diaSemanaAtual===4 ){
+  auladia = "2- Terça e Quinta"
+}
+
 export default function Painel() {
   const navigation = useNavigation();
   const [Turma,setTurma] = useState([]);
@@ -41,33 +48,27 @@ export default function Painel() {
 
       return (
     <View style={styles.container}>
-      <FlatList>
       <Text style={styles.texto}>{dataFormatada} {dataSemanaFormatada}</Text>
       <View style={styles.background}>
         <Text style={styles.texto}>Aulas de hoje</Text>
-            <FlatList data={Turma.filter(item =>item.DiasSemana.normalize('NFD').replace(/[\u0300-\u036f]/g, '').includes((diasSemana[diaSemanaAtual]).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')))}  renderItem={({item}) => (
+            <FlatList data={Turma.filter(item =>item?.DiasSemana=="1- Segunda e Quarta")}  renderItem={({item}) => (
                   <View style={styles.background1}>
-                    <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("DTurma", {item})}>  
+                    <TouchableOpacity style={styles.touchContainer} onPress={()=> navigation.navigate("D2Turma", {item})}>  
                         <View style={styles.card}>
                           <Text style={styles.texto1}>{item.Codigo}</Text>
-                            <View style={{flexDirection: 'row'}}>
-                              <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Dias</Text>
-                              <Text style={styles.texto2}>: {item.DiasSemana}</Text>
-                            </View>
                             <View style={{flexDirection: 'row'}}>
                               <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Horário</Text>
                               <Text style={styles.texto2}>: {item.Horario}</Text>
                             </View>
-                          <View style={{flexDirection: 'row'}}>
-                            <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Modal</Text>
-                            <Text style={styles.texto2}>: {item.Modalidade}</Text>
+                          <View >
+                            <Text style={[styles.texto2, { textDecorationLine: 'underline' }]}>Modal:</Text>
+                            <Text style={styles.texto2}> {item.Modalidade}</Text>
                           </View>
                         </View>
                     </TouchableOpacity>
                   </View>
                 )} keyExtractor={item => item.id} showsVerticalScrollIndicator={false} numColumns={1} />
             </View>
-      </FlatList>
     </View>
     );
 }
@@ -89,14 +90,14 @@ const styles = StyleSheet.create({
    background: {
     flex:1,
     alignSelf:'center',
-    padding:5,
+    padding:10,
     backgroundColor: '#b86516',
     borderRadius: 15,
     marginBottom: 20,
   },
     background1: {
     alignSelf:'center',
-    width: 380,
+    width: 300,
     height: 220,
     backgroundColor: '#cde2db',
     borderRadius: 15,

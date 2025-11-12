@@ -41,13 +41,21 @@ export default function App() {
         <stack.Screen name='Mensalidade' component={Mensalidade} options={{headerShown:false}}/>
         <stack.Screen name='MensalidadesPagas' component={MensalidadesPagas} options={{headerTintColor:'#4e5a5e',title:'Voltar',headerTransparent:true}}/>
     </stack.Navigator>
+    )}
+    function PainelStack(){
+    return(
+    <stack.Navigator>
+        <stack.Screen name='Dashboard' component={Painel} options={{headerShown:false}}/>
+        <stack.Screen name='D2Turma' component={DetalhesTurma} options={{headerTintColor:'#4e5a5e',title:'Voltar',headerTransparent:true}}/>
+    </stack.Navigator>
     )
+    
   }
   return (
     
     <NavigationContainer>
       <bottom.Navigator>
-        <bottom.Screen name='Painel' component={Painel} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
+        <bottom.Screen name='Painel' component={PainelStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Mensalidades' component={MensalidadeStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Alunos' component={AlunoStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
         <bottom.Screen name='Turmas' component={TurmasStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
