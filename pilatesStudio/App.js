@@ -12,6 +12,9 @@ import DetalhesAluno from './screens/DetalhesAluno';
 import MensalidadesPagas from './screens/MensalidadesPagas';
 import DetalhesTurma from './screens/DetalhesTurma';
 import InfoTurmas from './screens/InfoTurmas';
+import IconMensalidade from './assets/iconMensalidade';
+import Icona from './assets/icona';
+import Icont from './assets/icont';
 
 export default function App() {
   const bottom = createBottomTabNavigator();
@@ -56,10 +59,10 @@ export default function App() {
     
     <NavigationContainer>
       <bottom.Navigator>
-        <bottom.Screen name='Painel' component={PainelStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
-        <bottom.Screen name='Mensalidades' component={MensalidadeStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
-        <bottom.Screen name='Alunos' component={AlunoStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
-        <bottom.Screen name='Turmas' component={TurmasStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>)}}/>
+        <bottom.Screen name='Painel' component={PainelStack} options={{headerShown:false, tabBarIcon:()=>(<IconDash/>),tabBarActiveTintColor:"#b86516"}}/>
+        <bottom.Screen name='Mensalidades' component={MensalidadeStack} options={{headerShown:false, tabBarIcon:()=>(<IconMensalidade/>),tabBarActiveTintColor:"#b86516"}}/>
+        <bottom.Screen name='Alunos' component={AlunoStack} options={{headerShown:false, tabBarIcon:()=>(<Icona/>),tabBarActiveTintColor:"#b86516"}}/>
+        <bottom.Screen name='Turmas' component={TurmasStack} options={{headerShown:false, tabBarIcon:()=>(<Icont/>),tabBarActiveTintColor:"#b86516"}}/>
       </bottom.Navigator>
     </NavigationContainer>
   )

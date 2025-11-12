@@ -95,6 +95,15 @@ export default function Addalunos() {
                         
                         <TextInput style={styles.input} placeholder="Nome" inputMode='text' value={Nome} onChangeText={setNome} />
                         <TextInput style={styles.input} placeholder="Idade" inputMode='text' value={Idade} onChangeText={setIdade} />
+                        
+                        <TextInput style={styles.input} placeholder="Preço" inputMode='text' value={Preco} onChangeText={setPreco} />
+                        <TextInput style={styles.input} placeholder="Aniversário (dd/mm)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
+                        <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
+                        <TextInput style={styles.input} placeholder="Próximo pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
+                        <TextInput style={styles.input} placeholder="Endereço" inputMode='text' value={Endereco} onChangeText={setEndereco} />
+                        <TextInput style={styles.input} placeholder="Patologia" inputMode='text' value={Patologia} onChangeText={setPatologia} />
+                        <TextInput style={styles.input} placeholder="Turma um (código)" inputMode='text' value={TurmaUm} onChangeText={setTurmaUm} />
+                        <TextInput style={styles.input} placeholder="Turma dois (código)" inputMode='text' value={TurmaDois} onChangeText={setTurmaDois} />
                         <Text style={styles.texto}>Sexo:</Text>
                         <Picker style={styles.input1}
                         selectedValue={Sexo}
@@ -127,14 +136,6 @@ export default function Addalunos() {
                         <Picker.Item label="Pilates funcional x1" value="Pilates funcional x1" />
                         <Picker.Item label="Pilates funcional x2" value="Pilates funcional x2" />
                         </Picker>
-                        <TextInput style={styles.input} placeholder="Preço" inputMode='text' value={Preco} onChangeText={setPreco} />
-                        <TextInput style={styles.input} placeholder="Aniversário (dd/mm/yyyy)" inputMode='text' value={Aniversario} onChangeText={setAniversario} />
-                        <TextInput style={styles.input} placeholder="Data de matrícula (dd/mm/yyyy)" inputMode='text' value={DataMatricula} onChangeText={setDataMatricula} />
-                        <TextInput style={styles.input} placeholder="Próximo pagamento (dd/mm/yyyy)" inputMode='text' value={DataPagamento} onChangeText={setDataPagamento} />
-                        <TextInput style={styles.input} placeholder="Endereço" inputMode='text' value={Endereco} onChangeText={setEndereco} />
-                        <TextInput style={styles.input} placeholder="Patologia" inputMode='text' value={Patologia} onChangeText={setPatologia} />
-                        <TextInput style={styles.input} placeholder="Turma um (código)" inputMode='text' value={TurmaUm} onChangeText={setTurmaUm} />
-                        <TextInput style={styles.input} placeholder="Turma dois (código)" inputMode='text' value={TurmaDois} onChangeText={setTurmaDois} />
                     <TouchableOpacity style={styles.bo} onPress={paraPress}>
                         <Text style={styles.tsxtbo}>Adicionar Aluno</Text>
                     </TouchableOpacity>
@@ -176,7 +177,7 @@ const styles = StyleSheet.create({
         borderColor:'#4e5a5e',
         marginLeft:20,
         marginRight:20,
-        color:'#4e5a5e',
+        color:'#000000ff',
         padding:10,
     },
     bo:{
