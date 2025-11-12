@@ -104,14 +104,14 @@ const styles = StyleSheet.create({
   },
   texto1: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e',
+    color:'#000000ff',
     fontSize: 38,
     textAlign: 'center',
     fontWeight: 'bold'
   },
     texto2: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e',
+    color:'#000000ff',
     fontSize: 32,
 
   },
