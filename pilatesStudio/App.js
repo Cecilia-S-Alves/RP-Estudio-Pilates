@@ -46,6 +46,7 @@ export default function App() {
     return(
     <stack.Navigator>
         <stack.Screen name='Dashboard' component={Painel} options={{headerShown:false}}/>
+        <stack.Screen name='DAluno' component={DetalhesAluno} options={{headerTintColor:'#4e5a5e',title:'Voltar',headerTransparent:true}}/>
         <stack.Screen name='D2Turma' component={DetalhesTurma} options={{headerTintColor:'#4e5a5e',title:'Voltar',headerTransparent:true}}/>
     </stack.Navigator>
     )

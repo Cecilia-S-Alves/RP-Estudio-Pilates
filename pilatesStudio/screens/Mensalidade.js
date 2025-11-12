@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View, FlatList, TouchableOpacity,} from 'react-native';
+import {StyleSheet, Text, View, FlatList, TouchableOpacity, TextInput} from 'react-native';
 import {useState,useEffect } from 'react';
 import {db} from '../ControleFirebase';
 import {collection,doc,onSnapshot, updateDoc } from 'firebase/firestore';
@@ -7,6 +7,7 @@ import {useNavigation } from '@react-navigation/native';
 export default function Mensalidade() {
     const navigation = useNavigation();
     const [Mensalidade,setMensalidade] = useState([]);
+      const [nameSeach,setNameSeach] = useState('')
     
     useEffect(() => {
           async function carregarMensalidade() {
@@ -52,8 +53,8 @@ export default function Mensalidade() {
   return (
     <View style={styles.container}>
       <Text style={styles.texto}>Mensalidade</Text>
-      <TouchableOpacity onPress={()=> navigation.navigate("MensalidadesPagas")} style={styles.background1}><Text style={styles.texto1}>Ver já Pagas</Text></TouchableOpacity>
-      <FlatList data={Mensalidade?.filter(data => data?.Status === "Não Pago")} renderItem={({ item }) => (
+      <TouchableOpacity onPress={()=> navigation.navigate("MensalidadesPagas")} style={styles.background1}><Text style={styles.texto1}>Ver já Pagas</Text></TouchableOpacity>     
+      <FlatList data={Mensalidade?.filter(data => data?.Status === "Não Pago") } renderItem={({ item }) => (
 
         <View style={styles.background}>
 
