@@ -37,7 +37,7 @@ export default function DetalhesAluno() {
                     <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Convênio:</Text>
                     <Text style={styles.texto2}> {item.Convenio}</Text>
                     </View>
-                    <View style={{flexDirection: 'row'}}>
+                    <View >
                     <Text style={[styles.texto2,{ textDecorationLine: 'underline' }]}>Modalidade:</Text>
                     <Text style={styles.texto2}> {item.Modalidade} </Text>
                     </View>
@@ -86,8 +86,8 @@ const styles = StyleSheet.create({
   },
     texto2: {
     fontFamily:'Overlock SC',
-    color:'#4e5a5e',
-    fontSize: 32,
+    color:'#000000ff',
+    fontSize: 30,
 
   },
   background: {
